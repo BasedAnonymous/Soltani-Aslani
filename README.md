@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include<ctime>
 
 #include <fstream>
 using namespace std;
@@ -24,6 +25,142 @@ return a.substr(ignors[b - 1] + 1 ,enteha );
 
 
 }
+
+int months_length(std :: string input ){
+    int result;
+
+    if(input == "Jan")
+        return result = 1;
+
+    else if(input == "Feb")
+        result = 2;
+
+    else if(input == "Mar")
+        result = 3;
+
+    else if(input == "Apr")
+        result = 4;
+
+    else if(input == "May")
+        result = 5;
+
+    else if(input == "Jun")
+         result = 6;
+
+    else if(input == "Jul")
+        result = 7;
+
+    else if(input == "Aug")
+        result = 8;
+
+    else if(input == "Sep")
+        result = 9;
+
+    else if(input == "Oct")
+        result = 10;
+
+    else if(input == "Nov")
+        result = 11;
+
+    else if(input == "Dec")
+        result = 12;
+
+    return result;
+}
+
+std :: string add_date(){
+    std :: time_t my_time = time(0);
+    std :: string time = ("%s", ctime(&my_time));
+    time.pop_back();
+    return time;
+
+}
+
+std :: string delay_count(std :: string member_name , int which_book) {
+
+    struct data {
+        int day;
+        int hour;
+        int minute;
+        int second;
+        std :: string month;
+        int year;
+        std :: string help;
+    };
+
+    std :: ifstream file_search;
+    std :: string lines;
+    std :: vector<std :: string>tempo;
+    int count{0} , que;
+    file_search.open("Persons.txt");
+
+    while(getline(file_search,lines)){
+        if(cutter(lines,1)==member_name)
+            que = count;
+        tempo.push_back(lines);
+        count++;
+    }
+    file_search.close();
+
+    std :: string input_1 =cutter(tempo[que] , 12 + which_book);
+    std :: time_t my_time = time(0);
+    std :: string input_2 = ("%s", ctime(&my_time));
+    data sample_1 , sample_2;
+
+
+    sample_1.year =  stoi(input_1.substr(20,4));
+    sample_1.month =  (input_1.substr(4,3));
+    sample_1.day =  stoi(input_1.substr(8,2));
+    sample_1.hour = stoi(input_1.substr(11,2));
+    sample_1.minute = stoi(input_1.substr(14,2));
+
+    sample_2.year =  stoi(input_2.substr(20,4));
+    sample_2.month =  (input_2.substr(4,3));
+    sample_2.day =  stoi(input_2.substr(8,2));
+    sample_2.hour = stoi(input_2.substr(11,2));
+    sample_2.minute = stoi(input_2.substr(14,2));
+    sample_2.help = input_2.substr(4,3);
+
+    int result_min = sample_2.minute - sample_1.minute;
+    int result_h = sample_2.hour - sample_1.hour;
+    int result_day = sample_2.day - sample_1.day;
+    int result_month = months_length(sample_2.month) - months_length(sample_1.month);
+    int result_year = sample_2.year - sample_1.year;
+
+    if (result_min < 0){
+        result_h--;
+        result_min += 60;
+    }
+
+
+    if (result_h < 0){
+        result_day--;
+        result_h+= 24;
+    }
+
+    if (result_day < 0){  
+        result_month--;
+        result_day += 30;
+    }
+
+    if (result_month < 0){
+        result_year--;
+        result_month += 12;
+    }
+    
+    if(result_year == 0 && result_month == 0 && result_day*24*60+result_h*60+result_min <= 2880)
+        return "on time";
+
+    else {
+        std :: string delay_time = "you are late by " + std :: to_string(result_year) + " year(s) and "
+        + std :: to_string(result_month) + " month(s) and " + std :: to_string(result_day) + " day(s) and "
+        + std :: to_string(result_h) + " hours and " + std :: to_string(result_min) + " minutes.";
+
+        return delay_time;
+    }
+
+}
+
 void goodbye(std :: string user_name , std :: string file_name){
 
     std :: fstream reading_file;
