@@ -917,7 +917,7 @@ void Update_Person(Person per);
           cout << " Which characteristic you want to edit \n";
           cout << " 1 : Title\t2 : Authors\t3 : Publisher's name\t4 : Subjects\n";
           cout << " 5 : ISBN\t6 : Shelf number\t7 : Published year\t8 : Number of pages\n";
-          cout << " 9 : Edition\t10 : Number of used\t11 : Borrower username\n";
+          cout << " 9 : Edition\t10 : Number of used\t11 : Borrower username\n ";
           cin >> entekhabedit;
           string newvalue;
           cout << "\n Enter the new value : ";
@@ -947,7 +947,7 @@ void Update_Person(Person per);
                    Edit_Book(copy_book[4],person3); 
           }else{
                int newwork12;
-                cout << " Do you have another work?\n 1 : Yes\t2 : No\n";
+                cout << " Do you have another work?\n 1 : Yes\t2 : No\n ";
                 cin >> newwork12;
                 if(newwork12 == 1){
                     Menu(person3);
@@ -979,7 +979,7 @@ void Update_Person(Person per);
                     cout << " 1 : Username\t2 : Password\t3 : First name\t4 : Last name\n";
                     cout << " 5 : Year of birth date\t6 : month of birth date\t7 : day of birth date\n";
                     cout << " 8 : Is root user\t9 : Borrowed\t10 : ISBN of book_1\t10 : ISBN of book_2\n";
-                    cout << " 11 : The number of delays\t12 : The deadline for the first book\t13 : The deadline for the second book\n";
+                    cout << " 11 : The number of delays\t12 : The deadline for the first book\t13 : The deadline for the second book\n ";
                     cin >> entekhabeediteuser;
                     string newpersonvalue;
                     cout << "\n Enter the new value : ";
@@ -1002,13 +1002,13 @@ void Update_Person(Person per);
                     int moreeditperson;
                     cout << "\n Editing the person information has been done.\n";
                     cout << "\n Do You want to edit the information of this person again ?\n";
-                    cout << " 1 : Yes\t2 : No\n";
+                    cout << " 1 : Yes\t2 : No\n ";
                     cin >> moreeditperson;
                     if(moreeditperson == 1){
                         Edit_User(copy_person[0],person4);
                     }else{
                        int newwork14;
-                       cout << " Do you have another work?\n 1 : Yes\t2 : No\n";
+                       cout << " Do you have another work?\n 1 : Yes\t2 : No\n ";
                        cin >> newwork14;
                        if(newwork14 == 1){
                             Menu(person4);
@@ -1106,7 +1106,7 @@ if(person2.get_is_Root_User() == "Yes"){
             person2.Borrowing(borrow_string);
             Update_Person(person2);
             int newwork;
-                cout << " Do you have another work?\n 1 : Yes\t2 : No\n";
+                cout << " Do you have another work?\n 1 : Yes\t2 : No\n ";
                 cin >> newwork;
                 if(newwork == 1){
                     Menu(person2);
@@ -1132,7 +1132,7 @@ if(person2.get_is_Root_User() == "Yes"){
     }else if(entekhab == 4){
         person2.Return();
         int newwork;
-                cout << " Do you have another work?\n 1 : Yes\t2 : No\n";
+                cout << " Do you have another work?\n 1 : Yes\t2 : No\n ";
                 cin >> newwork;
                 if(newwork == 1){
                     Menu(person2);
@@ -1188,6 +1188,18 @@ if(person2.get_is_Root_User() == "Yes"){
         "0" << "_" << "free" << "_" << "\n";
         bookenew.close();
         cout << " The new book has been added.\n";
+                int newwork;
+                cout << " Do you have another work?\n 1 : Yes\t2 : No\n ";
+                cin >> newwork;
+                if(newwork == 1){
+                    Menu(person2);
+
+                }else if(newwork == 2){
+                   Update_Person(person2);
+                   person2.set_is_Member(0);
+        cout << "\n Now you logged out.\n";
+        First_Step(person2);
+                }
     }else if(entekhab == 7){
           string searchforeditbook;
           cout << "\n Search the book you want to edit its profile : ";
@@ -1199,7 +1211,7 @@ if(person2.get_is_Root_User() == "Yes"){
             }else{
                 cout << editbook;
                 int newwork;
-                cout << " Do you have another work?\n 1 : Yes\t2 : No\n";
+                cout << " Do you have another work?\n 1 : Yes\t2 : No\n ";
                 cin >> newwork;
                 if(newwork == 1){
                     Menu(person2);
@@ -1241,12 +1253,36 @@ if(person2.get_is_Root_User() == "Yes"){
         cout << " Day of birth date : ";
         cin >> rooz8;
         person2.sign_Up(idd8,ramzz8,esm8,famili8,{sal8,mah8,rooz8},"Yes");
+        int newwork;
+                cout << " Do you have another work?\n 1 : Yes\t2 : No\n ";
+                cin >> newwork;
+                if(newwork == 1){
+                    Menu(person2);
+
+                }else if(newwork == 2){
+                   Update_Person(person2);
+                   person2.set_is_Member(0);
+        cout << "\n Now you logged out.\n";
+        First_Step(person2);
+                }
     }else if(entekhab == 10){
           string deleteaccount1;
           cout << "\n Enter the account name you want to delete : ";
           cin >> deleteaccount1;
           goodbye(deleteaccount1,"Persons.txt");
           cout << "\n The account has been deleted.\n";
+          int newwork;
+                cout << " Do you have another work?\n 1 : Yes\t2 : No\n ";
+                cin >> newwork;
+                if(newwork == 1){
+                    Menu(person2);
+
+                }else if(newwork == 2){
+                   Update_Person(person2);
+                   person2.set_is_Member(0);
+        cout << "\n Now you logged out.\n";
+        First_Step(person2);
+                }
     }
     }
     }
