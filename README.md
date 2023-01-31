@@ -24,6 +24,76 @@ return a.substr(ignors[b - 1] + 1 ,enteha );
 
 
 }
+void goodbye(std :: string user_name , std :: string file_name){
+
+    std :: fstream reading_file;
+    std :: vector<std :: string> help;
+    reading_file.open(file_name);
+    int finding{0};
+    std :: string line;
+    int suspect;
+
+
+    while(getline(reading_file,line)){
+        help.push_back(line);
+        finding++;
+
+        if(cutter(line,1)==user_name){
+            suspect = finding;
+        }
+        
+    }
+    reading_file.close();
+
+
+    int size = help.size();
+    std :: ofstream writing_file;
+    writing_file.open(file_name);
+    for(int count = 0 ; count < size ; count ++){
+
+        if(count != suspect-1)
+            writing_file << help[count] << std :: endl;
+            
+    }
+
+    writing_file.close();
+}
+
+
+void goodbye_book(std :: string isbn , std :: string file_name){
+
+    std :: fstream reading_file;
+    std :: vector<std :: string> help;
+    reading_file.open(file_name);
+    int finding{0};
+    std :: string line;
+    int suspect;
+
+
+    while(getline(reading_file,line)){
+        help.push_back(line);
+        finding++;
+
+        if(cutter(line,5)==isbn){
+            suspect = finding;
+        }
+        
+    }
+    reading_file.close();
+
+    std :: ofstream writing_file;
+    int size = help.size();
+    writing_file.open(file_name);
+    for(int count = 0 ; count < size ; count ++){
+
+        if(count != suspect-1)
+            writing_file << help[count] << std :: endl;
+            
+    }
+    writing_file.close();
+
+}
+
 
 
 
