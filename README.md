@@ -816,12 +816,24 @@ class Person{
         borrowed--;
         time_Book1 = "free";
         book1 = "free";
-        cout << "\n Thank you for giving back the book on time.\n";
+        std :: string time = delay_count(this->user_Name,1);
+        if(time == "on time"){
+            cout << "\n Thank you for giving back the book on time.\n";   }
+        else{
+            cout << endl << time << endl;
+            the_Number_Of_Delays++;
+        }
        }else if(wich == 2){
         borrowed--;
         time_Book2 = "free";
         book2 = "free";
+        std :: string time = delay_count(this->user_Name,2);
+        if(time=="on time")
         cout << "\n Thank you for giving back the book on time.\n";
+        else{
+            cout << endl << time << endl;
+            the_Number_Of_Delays++;
+        }
        }
        }else{
           cout << "\n Please login or sign up first.\n";
@@ -1106,6 +1118,9 @@ if(person2.get_is_Root_User() == "Yes"){
         First_Step(person2);
                 }else if(entekhab == 3){
                     
+
+
+
 
 
 
