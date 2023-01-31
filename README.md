@@ -314,6 +314,21 @@ class Person{
    
    
    public :
+   
+   
+   
+   void set_ex_1(int input){
+       extension_Book1 = input;
+   }
+   void set_ex_2(int input){
+       extension_Book2 = input;
+   }
+   void set_time1(std :: string input){
+       time_Book1 = input;
+   }
+   void set_time2(std :: string input){
+       time_Book2 = input;
+   }
 
 
 
@@ -815,7 +830,9 @@ class Person{
        if(wich == 1){
         borrowed--;
         time_Book1 = "free";
+        set_ex_1(0);
         book1 = "free";
+        CHANGER_book(book1,11,"free");
         std :: string time = delay_count(this->user_Name,1);
         if(time == "on time"){
             cout << "\n Thank you for giving back the book on time.\n";   }
@@ -824,6 +841,8 @@ class Person{
             the_Number_Of_Delays++;
         }
        }else if(wich == 2){
+        CHANGER_book(book2,11,"free");
+        set_ex_2(0);
         borrowed--;
         time_Book2 = "free";
         book2 = "free";
@@ -1117,13 +1136,45 @@ if(person2.get_is_Root_User() == "Yes"){
         cout << "\n Now you logged out.\n";
         First_Step(person2);
                 }else if(entekhab == 3){
+                    int option;
+                    cout << "\n Which item you wish to extend? \n for firstbook press one and for the second book press two ";
+                    cin >> option;
+                    if(option==1){
+                        if(person2.get_extension_Book1()==0){
+                            person2.set_ex_1(1);
+                            person2.set_time1(add_time());
+                            cout<<"\n the book has it's date value extended ";
+                        }
+                        else if(person2.get_extension_Book1()==1){
+                            cout<<"\n you have already extended this item once, no more is allowed ";
+                            
+                        }
+                    }else if(option==2){
+                        if(person2.get_extension_Book2()==0){
+                            person2.set_ex_2(1);
+                            person2.set_time2(add_time());
+                            cout<<"\n the book has it's date value extended ";
+                        }
+                        else if(person2.get_extension_Book2()==1){
+                            cout<<"\n you have already extended this item once, no more is allowed ";
+                        }
+                    }
                     
+                     Update_Person(person2);
+                    int newwork;
+                cout << " Do you have another work?\n 1 : Yes\t2 : No\n ";
+                cin >> newwork;
+                if(newwork == 1){
+                    Menu(person2);
 
-
-
-
-
-
+                }else if(newwork == 2){
+                    
+                    Update_Person(person2);
+                    person2.set_is_Member(0);
+        cout << "\n Now you logged out.\n";
+        First_Step(person2);
+        
+                }
 
 
                     
